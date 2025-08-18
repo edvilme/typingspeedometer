@@ -1,8 +1,7 @@
 import * as vscode from 'vscode';
 
-const TYPING_TIMEOUT_MS = 3_000;
-
 export default function generateTypeCommand(context: vscode.ExtensionContext) {
+    const typingTimeoutMilliseconds = vscode.workspace.getConfiguration('typingspeed').get<number>('sessionTimeout', 3000);
     return vscode.commands.registerTextEditorCommand('typingspeed.textType', (textEditor: vscode.TextEditor, edit: vscode.TextEditorEdit) => {
 		// Get the current time
 		const currentTime = new Date();
@@ -13,7 +12,7 @@ export default function generateTypeCommand(context: vscode.ExtensionContext) {
 		const lastSessionEndTime: Date = new Date(context.globalState.get<Date>('typingspeed.sessionEndTime', new Date()));
 		
 		// If last session ended more than <TYPING_TIMEOUT> seconds ago
-		if (lastSessionEndTime && (currentTime.getTime() - lastSessionEndTime.getTime()) > TYPING_TIMEOUT_MS) {
+		if (lastSessionEndTime && (currentTime.getTime() - lastSessionEndTime.getTime()) > typingTimeoutMilliseconds) {
 			// Reset the session data
 			context.globalState.update('typingspeed.sessionKeystrokes', 0);
 			context.globalState.update('typingspeed.sessionStartTime', new Date());
@@ -34,11 +33,11 @@ export default function generateTypeCommand(context: vscode.ExtensionContext) {
 
 		// High Score
 		const highScore = context.globalState.get<number>('typingspeed.highScore', 0);
-		if (typingSpeed > highScore && duration > TYPING_TIMEOUT_MS) {
+		if (typingSpeed > highScore && duration > typingTimeoutMilliseconds) {
 			context.globalState.update('typingspeed.highScore', typingSpeed.toFixed(2));
 			vscode.window.showInformationMessage(`Typing Speed New High Score: ${typingSpeed.toFixed(2)} keys/sec!`);
 		}
 
-		vscode.window.setStatusBarMessage(`$(keyboard) Current typing speed: ${typingSpeed.toFixed(2)} keys/sec`, TYPING_TIMEOUT_MS);
+		vscode.window.setStatusBarMessage(`$(keyboard) Current typing speed: ${typingSpeed.toFixed(2)} keys/sec`, typingTimeoutMilliseconds);
 	});
 }
