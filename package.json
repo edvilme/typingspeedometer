@@ -35,7 +35,9 @@
       "typingspeed.sessionTimeout": {
         "type": "number",
         "default": 3000,
-        "description": "Timeout duration for typing sessions in milliseconds."
+        "description": "Timeout duration for typing sessions in milliseconds.",
+        "minimum": 0,
+        "maximum": 60000
       }
     }
   },
