@@ -37,7 +37,20 @@
         "default": 3000,
         "description": "Timeout duration for typing sessions in milliseconds.",
         "minimum": 0,
-        "maximum": 60000
+      "properties": {
+        "typingspeed": {
+          "type": "object",
+          "description": "Typing Speed extension settings.",
+          "properties": {
+            "sessionTimeout": {
+              "type": "number",
+              "default": 3000,
+              "description": "Timeout duration for typing sessions in milliseconds.",
+              "minimum": 0,
+              "maximum": 60000
+            }
+          }
+        }
       }
     }
   },
