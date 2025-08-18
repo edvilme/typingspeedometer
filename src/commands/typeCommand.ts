@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
 
-const TYPING_TIMEOUT_MS = 3_000;
+// const TYPING_TIMEOUT_MS = 3_000;
 
 export default function generateTypeCommand(context: vscode.ExtensionContext) {
+    const TYPING_TIMEOUT_MS = vscode.workspace.getConfiguration('typingspeed').get<number>('sessionTimeout', 3000);
     return vscode.commands.registerTextEditorCommand('typingspeed.textType', (textEditor: vscode.TextEditor, edit: vscode.TextEditorEdit) => {
 		// Get the current time
 		const currentTime = new Date();
