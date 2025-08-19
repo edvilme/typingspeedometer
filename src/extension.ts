@@ -5,12 +5,12 @@ import generateHighScoreCommand from './commands/highScoreCommand';
 import generateTypeCommand from './commands/typeCommand';
 
 export function activate(context: vscode.ExtensionContext) {
-	console.log('Congratulations, your extension "typingspeed" is now active!');
+	console.log('Congratulations, your extension "typingspeedometer" is now active!');
 
-	context.globalState.update('typingspeed.sessionKeystrokes', 0);
-	context.globalState.update('typingspeed.sessionStartTime', new Date());
-	context.globalState.update('typingspeed.sessionEndTime', new Date());
-	context.globalState.update('typingspeed.highScore', 0);
+	context.globalState.update('typingspeedometer.sessionKeystrokes', 0);
+	context.globalState.update('typingspeedometer.sessionStartTime', new Date());
+	context.globalState.update('typingspeedometer.sessionEndTime', new Date());
+	context.globalState.update('typingspeedometer.highScore', 0);
 
 	// High Score Command
 	context.subscriptions.push(generateHighScoreCommand(context));
@@ -20,7 +20,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// Override the built-in 'type' command
 	const typeOverride = vscode.commands.registerCommand('type', async (args) => {
-		vscode.commands.executeCommand('typingspeed.textType');
+		vscode.commands.executeCommand('typingspeedometer.textType');
 		await vscode.commands.executeCommand('default:type', args);
 	});
 

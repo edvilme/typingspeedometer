@@ -21,7 +21,7 @@ Developers are weird, we flex over random non-technical skills such as typing sp
 
 ## Settings
 
-- `typingspeed.sessionTimeout`: Timeout duration for typing sessions in milliseconds (default: 3000)
+- `typingspeedometer.sessionTimeout`: Timeout duration for typing sessions in milliseconds (default: 3000)
 
 ## Development
 

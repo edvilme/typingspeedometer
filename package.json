@@ -1,6 +1,7 @@
 {
-  "name": "typingspeed",
+  "name": "typingspeedometerometer",
   "displayName": "typing-speed",
+  "publisher": "edvilme",
   "description": "Shows average keystrokes per minute",
   "version": "0.0.1",
   "engines": {
@@ -8,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/edvilme/typingspeed.git"
+    "url": "https://github.com/edvilme/typingspeedometer.git"
   },
   "categories": [
     "Other"
@@ -20,24 +21,24 @@
   "contributes": {
     "commands": [
       {
-        "command": "typingspeed.showHighScore",
+        "command": "typingspeedometer.showHighScore",
         "title": "Show High Score"
       },
       {
-        "command": "typingspeed.textType",
+        "command": "typingspeedometer.textType",
         "title": "Text Typing"
       }
     ],
     "keybindings": [
       {
-        "command": "typingspeed.showHighScore",
+        "command": "typingspeedometer.showHighScore",
         "key": "ctrl+alt+s",
         "when": "editorTextFocus"
       }
     ],
     "configuration": {
       "properties": {
-        "typingspeed": {
+        "typingspeedometer": {
           "type": "object",
           "description": "Typing Speed extension settings.",
           "properties": {
