@@ -1,7 +1,8 @@
 on:
   push:
     branch:
-      main
+    branches:
+      - main
 
 name: Deploy Extension
 jobs:
