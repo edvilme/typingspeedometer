@@ -32,11 +32,6 @@
       }
     ],
     "configuration": {
-      "typingspeed.sessionTimeout": {
-        "type": "number",
-        "default": 3000,
-        "description": "Timeout duration for typing sessions in milliseconds.",
-        "minimum": 0,
       "properties": {
         "typingspeed": {
           "type": "object",
