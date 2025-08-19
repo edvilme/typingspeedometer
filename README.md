@@ -1,3 +1,5 @@
+![](docs/img/icon.png)
+
 # Typing Speedometer
 
 ![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/edvilme.typingspeedometer) 
