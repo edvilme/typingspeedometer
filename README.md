@@ -1,4 +1,4 @@
-# Typing Speed VS Code Extension
+# Typing Speedometer
 
 Developers are weird, we flex over random non-technical skills such as typing speed. Use this extension to track your typing speed and keystrokes in Visual Studio Code.
 
