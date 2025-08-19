@@ -1,5 +1,9 @@
 # Typing Speedometer
 
+![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/edvilme.typingspeedometer) 
+![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/edvilme.typingspeedometer)
+
+
 Developers are weird, we flex over random non-technical skills such as typing speed. Use this extension to track your typing speed and keystrokes in Visual Studio Code.
 
 ## Features

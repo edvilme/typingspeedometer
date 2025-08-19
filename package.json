@@ -2,8 +2,8 @@
   "name": "typingspeedometer",
   "displayName": "typing-speed",
   "publisher": "edvilme",
-  "description": "Shows average keystrokes per minute",
-  "version": "0.0.1",
+  "description": "Shows average keystrokes per second",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.103.0"
   },
