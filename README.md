@@ -12,10 +12,12 @@ Developers are weird, we flex over random non-technical skills such as typing sp
 ## Usage
 
 1. Install the extension.
-2. Start typing in any editor window. The extension will automatically count your typing speed (keystrokes per second).
-3. Use the Command Palette (`Cmd+Shift+P` or `Ctrl+Shift+P`) and run:
-	- `Show High Score` to view your stats
-	- `Text Typing` to trigger typing logic manually
+2. Start typing in any editor window. The extension will automatically count your keystrokes per second.
+![](docs/img/status_bar.png)
+3. High scores will be automatically saved! Break your own records!
+![](docs/img/new_high_score.png)
+4. Check your high score with <key>Ctrl</key> <key>Alt</key> <key>S</key>, or by using the Command Palette.
+![](docs/img/check_high_score.png)
 
 ## Settings
 
