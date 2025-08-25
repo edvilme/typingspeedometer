@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import generateHighScoreCommand from './commands/highScoreCommand';
-import generateTypeCommand from './commands/typeCommand';
+import generateTypeCommand, { handleTyping } from './commands/typeCommand';
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log('Congratulations, your extension "typingspeedometer" is now active!');
@@ -22,7 +22,10 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// Override the built-in 'type' command
 	const typeOverride = vscode.commands.registerCommand('type', async (args: { text: string }) => {
-		vscode.commands.executeCommand('typingspeedometer.textType', args);
+		const activeEditor = vscode.window.activeTextEditor;
+		if (activeEditor) {
+			handleTyping(context, args);
+		}
 		await vscode.commands.executeCommand('default:type', args);
 	});
 
