@@ -11,18 +11,21 @@ Developers are weird, we flex over random non-technical skills such as typing sp
 ## Features
 
 - Counts keystrokes in the editor
-- Persists keystroke count between sessions
-- Shows high scores for different time ranges
+- **NEW: Words Per Minute (WPM) calculation** - Tracks words completed by monitoring spaces, tabs, and enters
+- Shows both keystroke speed (keys/sec) and WPM in real-time
+- Persists keystroke count and word count between sessions
+- Shows high scores for both keystroke speed and WPM
 - Configurable session timeout
 
 ## Usage
 
 1. Install the extension.
-2. Start typing in any editor window. The extension will automatically count your keystrokes per second.
+2. Start typing in any editor window. The extension will automatically count your keystrokes per second and words per minute (WPM).
 ![](docs/img/status_bar.png)
-3. High scores will be automatically saved! Break your own records!
+3. Words are counted each time you type a space, tab, or press enter - indicating word completion.
+4. High scores for both keystroke speed and WPM will be automatically saved! Break your own records!
 ![](docs/img/new_high_score.png)
-4. Check your high score with <key>Ctrl</key> <key>Alt</key> <key>S</key>, or by using the Command Palette.
+5. Check your high scores with <key>Ctrl</key> <key>Alt</key> <key>S</key>, or by using the Command Palette.
 ![](docs/img/check_high_score.png)
 
 ## Settings

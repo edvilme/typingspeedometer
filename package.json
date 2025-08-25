@@ -2,7 +2,7 @@
   "name": "typingspeedometer",
   "displayName": "typing-speed",
   "publisher": "edvilme",
-  "description": "Shows average keystrokes per second",
+  "description": "Shows keystrokes per second and words per minute (WPM) while typing",
   "version": "1.0.1",
   "icon": "docs/img/icon.png",
   "engines": {
