@@ -3,17 +3,35 @@
 import * as vscode from 'vscode';
 import generateHighScoreCommand from './commands/highScoreCommand';
 import generateTypeCommand from './commands/typeCommand';
+import generateStatsCommand from './commands/statsCommand';
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log('Congratulations, your extension "typingspeedometer" is now active!');
 
 	context.globalState.update('typingspeedometer.sessionKeystrokes', 0);
+	context.globalState.update('typingspeedometer.sessionCorrections', 0);
 	context.globalState.update('typingspeedometer.sessionStartTime', new Date());
 	context.globalState.update('typingspeedometer.sessionEndTime', new Date());
-	context.globalState.update('typingspeedometer.highScore', 0);
+	
+	// Initialize high scores if they don't exist (backward compatibility)
+	if (!context.globalState.get('typingspeedometer.highScore')) {
+		context.globalState.update('typingspeedometer.highScore', 0);
+	}
+	if (!context.globalState.get('typingspeedometer.highScoreKPS')) {
+		context.globalState.update('typingspeedometer.highScoreKPS', 0);
+	}
+	if (!context.globalState.get('typingspeedometer.highScoreWPM')) {
+		context.globalState.update('typingspeedometer.highScoreWPM', 0);
+	}
+	if (!context.globalState.get('typingspeedometer.highScoreAccuracy')) {
+		context.globalState.update('typingspeedometer.highScoreAccuracy', 0);
+	}
 
 	// High Score Command
 	context.subscriptions.push(generateHighScoreCommand(context));
+
+	// Detailed Stats Command
+	context.subscriptions.push(generateStatsCommand(context));
 
 	// Text Type Command (for manual invocation, if needed)
 	context.subscriptions.push(generateTypeCommand(context));

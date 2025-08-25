@@ -2,8 +2,8 @@
   "name": "typingspeedometer",
   "displayName": "typing-speed",
   "publisher": "edvilme",
-  "description": "Shows average keystrokes per second",
-  "version": "1.0.1",
+  "description": "Advanced typing speed tracker with WPM, accuracy, and detailed analytics for developers",
+  "version": "1.1.0",
   "icon": "docs/img/icon.png",
   "engines": {
     "vscode": "^1.103.0"
@@ -15,6 +15,17 @@
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "typing",
+    "speed",
+    "wpm", 
+    "accuracy",
+    "statistics",
+    "productivity",
+    "performance",
+    "analytics",
+    "tracker"
+  ],
   "activationEvents": [
     "onCommand:type"
   ],
@@ -23,7 +34,11 @@
     "commands": [
       {
         "command": "typingspeedometer.showHighScore",
-        "title": "Show High Score"
+        "title": "Show High Scores"
+      },
+      {
+        "command": "typingspeedometer.showDetailedStats",
+        "title": "Show Detailed Statistics"
       },
       {
         "command": "typingspeedometer.textType",
@@ -34,6 +49,11 @@
       {
         "command": "typingspeedometer.showHighScore",
         "key": "ctrl+alt+s",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "typingspeedometer.showDetailedStats",
+        "key": "ctrl+alt+t",
         "when": "editorTextFocus"
       }
     ],
@@ -49,6 +69,23 @@
               "description": "Timeout duration for typing sessions in milliseconds.",
               "minimum": 0,
               "maximum": 60000
+            },
+            "displayFormat": {
+              "type": "string",
+              "default": "full",
+              "enum": ["full", "wpm-only", "kps-only", "compact"],
+              "enumDescriptions": [
+                "Show WPM, KPS, and accuracy",
+                "Show only words per minute",
+                "Show only keystrokes per second", 
+                "Show WPM and accuracy only"
+              ],
+              "description": "Choose what metrics to display in the status bar."
+            },
+            "showAccuracy": {
+              "type": "boolean",
+              "default": true,
+              "description": "Whether to track and display typing accuracy."
             }
           }
         }
