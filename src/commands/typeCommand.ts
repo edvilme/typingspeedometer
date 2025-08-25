@@ -42,15 +42,15 @@ export default function generateTypeCommand(context: vscode.ExtensionContext) {
 
 		// High Score
 		const highScore = context.globalState.get<number>('typingspeedometer.highScore', 0);
-		const wpmHighScore = context.globalState.get<number>('typingspeedometer.wpmHighScore', 0);
+		const wordsPerMinuteHighScore = context.globalState.get<number>('typingspeedometer.wordsPerMinuteHighScore', 0);
 		
 		if (typingspeedometer > highScore && duration > typingTimeoutMilliseconds) {
 			context.globalState.update('typingspeedometer.highScore', typingspeedometer.toFixed(2));
 			vscode.window.showInformationMessage(`Typing Speed New High Score: ${typingspeedometer.toFixed(2)} keys/sec!`);
 		}
 		
-		if (wordsPerMinute > wpmHighScore && duration > typingTimeoutMilliseconds && currentSessionWords > 0) {
-			context.globalState.update('typingspeedometer.wpmHighScore', wordsPerMinute.toFixed(2));
+		if (wordsPerMinute > wordsPerMinuteHighScore && duration > typingTimeoutMilliseconds && currentSessionWords > 0) {
+			context.globalState.update('typingspeedometer.wordsPerMinuteHighScore', wordsPerMinute.toFixed(2));
 			vscode.window.showInformationMessage(`WPM New High Score: ${wordsPerMinute.toFixed(2)} words/min!`);
 		}
 

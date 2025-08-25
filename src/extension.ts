@@ -12,7 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.globalState.update('typingspeedometer.sessionStartTime', new Date());
 	context.globalState.update('typingspeedometer.sessionEndTime', new Date());
 	context.globalState.update('typingspeedometer.highScore', 0);
-	context.globalState.update('typingspeedometer.wpmHighScore', 0);
+	context.globalState.update('typingspeedometer.wordsPerMinuteHighScore', 0);
 
 	// High Score Command
 	context.subscriptions.push(generateHighScoreCommand(context));
