@@ -26,7 +26,7 @@ export function handleTyping(context: vscode.ExtensionContext, args?: { text: st
     const currentSessionKeyStrokes = lastSessionKeystrokes + 1;
 
     // Check if this keystroke represents a word boundary (space, tab, or enter)
-    const isWordBoundary = args?.text && /\s/.test(args.text);
+    const isWordBoundary = args?.text && /[\s\t\r\n]/.test(args.text);
     const currentSessionWords = isWordBoundary ? lastSessionWords + 1 : lastSessionWords;
 
     // Typing speed calculations
