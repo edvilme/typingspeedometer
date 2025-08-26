@@ -37,7 +37,8 @@ suite('Extension Test Suite', () => {
 		assert.strictEqual(expectedWPM, 5, 'WPM calculation should be correct');
 		
 		// Test edge case: 0 duration
-		const wpmZeroDuration = 0 > 0 ? words / 0 : 0;
+		const zeroDuration = 0;
+		const wpmZeroDuration = zeroDuration > 0 ? words / zeroDuration : 0;
 		assert.strictEqual(wpmZeroDuration, 0, 'WPM should be 0 when duration is 0');
 	});
 });
