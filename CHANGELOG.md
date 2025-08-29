@@ -6,7 +6,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
-## [1.1.0] - 2024-12-20
+## [1.0.3] - 2024-12-20
 
 ### Added
 - Comprehensive CHANGELOG.md with complete feature history
