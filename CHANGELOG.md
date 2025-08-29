@@ -6,6 +6,18 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [1.1.0] - 2024-12-20
+
+### Added
+- Comprehensive CHANGELOG.md with complete feature history
+- GitHub Copilot automation instructions for maintaining CHANGELOG.md
+- Mandatory version bumping requirements for every pull request
+- Automated maintenance guidelines with semantic versioning rules
+
+### Changed
+- Enhanced documentation structure following Keep a Changelog format
+- Improved development workflow with automated changelog maintenance
+
 ## [1.0.2] - 2024-12-19
 
 ### Added
