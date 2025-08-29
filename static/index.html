@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speedometer - VS Code Extension</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/icon.png" type="image/png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="img/icon.png" alt="Typing Speedometer" class="logo-img">
+                    <span class="logo-text">Typing Speedometer</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#installation">Install</a>
+                    <a href="https://github.com/edvilme/typingspeedometer" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Track Your Typing Speed in VS Code</h1>
+                <p class="hero-subtitle">Developers are weird, we flex over random non-technical skills such as typing speed. Use this extension to track your typing speed and keystrokes in Visual Studio Code.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">Keystrokes/sec</span>
+                        <span class="stat-label">Real-time tracking</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">WPM</span>
+                        <span class="stat-label">Words per minute</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">High Scores</span>
+                        <span class="stat-label">Beat your records</span>
+                    </div>
+                </div>
+                <a href="vscode:extension/edvilme.typingspeedometer" class="cta-button">Install Extension</a>
+                <p class="marketplace-link">
+                    Also available on <a href="https://marketplace.visualstudio.com/items?itemName=edvilme.typingspeedometer" target="_blank">VS Code Marketplace</a>
+                </p>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature">
+                        <h3>Real-time Tracking</h3>
+                        <p>Counts keystrokes in the editor and shows both keystroke speed (keys/sec) and WPM in real-time</p>
+                        <img src="img/status_bar.png" alt="Status bar showing typing speed" class="feature-img">
+                    </div>
+                    <div class="feature">
+                        <h3>High Score System</h3>
+                        <p>Persists keystroke count and word count between sessions. Shows high scores for both keystroke speed and WPM</p>
+                        <img src="img/new_high_score.png" alt="New high score notification" class="feature-img">
+                    </div>
+                    <div class="feature">
+                        <h3>Check Your Progress</h3>
+                        <p>View your high scores with Ctrl+Alt+S, or by using the Command Palette. Reset scores when you want a fresh start</p>
+                        <img src="img/check_high_score.png" alt="Check high score dialog" class="feature-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works">
+            <div class="container">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Install & Start Typing</h3>
+                        <p>Install the extension and start typing in any editor window. The extension automatically counts your keystrokes per second and words per minute.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Watch Your Stats</h3>
+                        <p>Words are counted each time you type a space, tab, or press enter - indicating word completion. See your real-time stats in the status bar.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Beat Your Records</h3>
+                        <p>High scores for both keystroke speed and WPM are automatically saved! Break your own records and improve your typing skills.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="installation" class="installation">
+            <div class="container">
+                <h2>Installation</h2>
+                <div class="install-methods">
+                    <div class="install-method">
+                        <h3>VS Code Extension Manager</h3>
+                        <ol>
+                            <li>Open VS Code</li>
+                            <li>Go to Extensions (Ctrl+Shift+X)</li>
+                            <li>Search for "typing speedometer" or "edvilme.typingspeedometer"</li>
+                            <li>Click Install</li>
+                        </ol>
+                    </div>
+                    <div class="install-method">
+                        <h3>Command Line</h3>
+                        <code>code --install-extension edvilme.typingspeedometer</code>
+                    </div>
+                    <div class="install-method">
+                        <h3>Quick Install</h3>
+                        <a href="vscode:extension/edvilme.typingspeedometer" class="install-button">Install Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="settings">
+            <div class="container">
+                <h2>Settings</h2>
+                <div class="setting">
+                    <code>typingspeedometer.sessionTimeout</code>
+                    <p>Timeout duration for typing sessions in milliseconds (default: 3000)</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Typing Speedometer</h4>
+                    <p>Track your typing speed in Visual Studio Code</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="https://marketplace.visualstudio.com/items?itemName=edvilme.typingspeedometer" target="_blank">VS Code Marketplace</a></li>
+                        <li><a href="https://github.com/edvilme/typingspeedometer" target="_blank">GitHub Repository</a></li>
+                        <li><a href="https://github.com/edvilme/typingspeedometer/issues" target="_blank">Report Issues</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Developer</h4>
+                    <p>Created by <a href="https://github.com/edvilme" target="_blank">Edvilme</a></p>
+                    <p>MIT License</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Typing Speedometer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
