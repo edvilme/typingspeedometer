@@ -93,7 +93,10 @@ When making code changes, always:
    - Use clear, user-friendly descriptions
    - Reference specific features or commands affected
 
-4. **Update package.json version** to match the new CHANGELOG version
+4. **Update package.json version** to match the new CHANGELOG version:
+   - Modify the `"version"` field in package.json to exactly match the version being added to CHANGELOG.md
+   - Ensure both files use the same version number format (e.g., "1.2.3")
+   - This is required for VS Code extension publishing and marketplace consistency
 
 ### Extension-Specific Guidelines
 
@@ -144,23 +147,32 @@ Before updating CHANGELOG.md, ensure:
 - [ ] Descriptions are user-friendly and clear
 - [ ] Technical details are explained in simple terms
 - [ ] All user-facing changes are documented
-- [ ] package.json version matches CHANGELOG version
+- [ ] **package.json version matches CHANGELOG version exactly**
+- [ ] Both files are updated in the same commit
 
 ## Commit Message Guidelines
 
-When updating CHANGELOG.md:
+When updating CHANGELOG.md and package.json:
 - Use conventional commit format: `feat:`, `fix:`, `docs:`
 - Include version number in commit message
 - Reference specific features or bug fixes
+- Update both CHANGELOG.md and package.json in the same commit
 
 Examples:
 - `docs: update CHANGELOG.md for v1.1.0 with WPM improvements`
 - `chore: release v1.0.3 with session timeout fixes`
+- `feat: bump to v1.2.0 with new accuracy tracking feature`
 
 ## Integration with Development Workflow
 
-1. **Before merging PR**: Ensure CHANGELOG.md is updated
-2. **On release**: Create git tag matching version number
+1. **Before merging PR**: Ensure both CHANGELOG.md and package.json are updated with matching version numbers
+2. **On release**: Create git tag matching version number from both files
 3. **After release**: Move unreleased changes to new version section
 
-This ensures the CHANGELOG.md stays current and provides users with clear information about extension improvements and changes.
+### Critical Note on Version Synchronization
+Always ensure that:
+- The version in package.json matches exactly the version being added to CHANGELOG.md
+- Both files are updated in the same commit to maintain consistency
+- The version format follows semantic versioning (MAJOR.MINOR.PATCH)
+
+This ensures the CHANGELOG.md stays current and provides users with clear information about extension improvements and changes, while maintaining version consistency required for VS Code extension marketplace.
