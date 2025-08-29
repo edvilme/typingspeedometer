@@ -3,6 +3,21 @@
 ## Overview
 This document provides instructions for GitHub Copilot to automatically maintain and update the CHANGELOG.md file for the Typing Speedometer VS Code extension.
 
+## 🚨 CRITICAL REQUIREMENT: Version Bumping for Every PR
+
+**MANDATORY**: Every single pull request MUST include a version bump in package.json, regardless of the type or size of the change. This is a non-negotiable requirement for the project.
+
+### Version Bump Requirements
+- **Every PR** must increment the version number in package.json
+- **Every PR** must add a corresponding entry to CHANGELOG.md with the same version number
+- **Both files** must be updated in the same commit
+- **No exceptions** - even minor documentation changes require a version bump
+
+### Quick Reference for Version Bumping
+- Documentation updates, typos, minor fixes → PATCH version (e.g., 1.0.2 → 1.0.3)
+- New features, enhancements, commands → MINOR version (e.g., 1.0.2 → 1.1.0)  
+- Breaking changes, major API changes → MAJOR version (e.g., 1.0.2 → 2.0.0)
+
 ## CHANGELOG.md Maintenance Guidelines
 
 ### Format
@@ -75,26 +90,32 @@ Example:
 
 When making code changes, always:
 
-1. **Identify the change type** based on the modifications:
+1. **FIRST: Bump the version in package.json** (MANDATORY FOR EVERY PR):
+   - Increment version number according to semantic versioning rules
+   - This step is required before any other changes
+   - No PR should be submitted without a version bump
+
+2. **Identify the change type** based on the modifications:
    - Code additions → `Added`
    - Behavior modifications → `Changed` 
    - Bug fixes → `Fixed`
    - Removals → `Removed`
 
-2. **Determine version bump** required:
+3. **Determine version bump** required:
    - New features or commands → MINOR version bump
    - Bug fixes or small improvements → PATCH version bump
    - Breaking changes → MAJOR version bump
 
-3. **Update CHANGELOG.md**:
+4. **Update CHANGELOG.md**:
+4. **Update CHANGELOG.md**:
    - Add new version section above `[Unreleased]`
    - Include current date
    - List changes under appropriate categories
    - Use clear, user-friendly descriptions
    - Reference specific features or commands affected
 
-4. **Update package.json version** to match the new CHANGELOG version:
-   - Modify the `"version"` field in package.json to exactly match the version being added to CHANGELOG.md
+5. **Verify package.json version synchronization**:
+   - Confirm the `"version"` field in package.json matches exactly the version being added to CHANGELOG.md
    - Ensure both files use the same version number format (e.g., "1.2.3")
    - This is required for VS Code extension publishing and marketplace consistency
 
@@ -141,6 +162,7 @@ When making code changes, always:
 ### Validation Checklist
 
 Before updating CHANGELOG.md, ensure:
+- [ ] **Version number has been bumped in package.json (MANDATORY)**
 - [ ] Version number follows semantic versioning
 - [ ] Date is in YYYY-MM-DD format
 - [ ] Changes are categorized correctly
@@ -149,6 +171,7 @@ Before updating CHANGELOG.md, ensure:
 - [ ] All user-facing changes are documented
 - [ ] **package.json version matches CHANGELOG version exactly**
 - [ ] Both files are updated in the same commit
+- [ ] **No PR submitted without version bump**
 
 ## Commit Message Guidelines
 
@@ -165,14 +188,17 @@ Examples:
 
 ## Integration with Development Workflow
 
-1. **Before merging PR**: Ensure both CHANGELOG.md and package.json are updated with matching version numbers
-2. **On release**: Create git tag matching version number from both files
-3. **After release**: Move unreleased changes to new version section
+1. **Before starting any PR**: Bump version in package.json first
+2. **Before merging PR**: Ensure both CHANGELOG.md and package.json are updated with matching version numbers
+3. **On release**: Create git tag matching version number from both files
+4. **After release**: Move unreleased changes to new version section
 
 ### Critical Note on Version Synchronization
-Always ensure that:
+**EVERY PR MUST INCLUDE VERSION BUMP**: Always ensure that:
+- Every single PR includes a version bump in package.json, no exceptions
 - The version in package.json matches exactly the version being added to CHANGELOG.md
 - Both files are updated in the same commit to maintain consistency
 - The version format follows semantic versioning (MAJOR.MINOR.PATCH)
+- Even minor changes like documentation updates require a version bump
 
 This ensures the CHANGELOG.md stays current and provides users with clear information about extension improvements and changes, while maintaining version consistency required for VS Code extension marketplace.
