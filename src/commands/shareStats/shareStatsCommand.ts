@@ -3,11 +3,6 @@ import * as vscode from 'vscode';
 
 export default function generateShareStatsCommand(context: vscode.ExtensionContext) {
     return vscode.commands.registerCommand('typingspeedometer.shareStats', async () => {
-        const wordsPerMinuteHighScore = context.globalState.get<number>('typingspeedometer.wordsPerMinuteHighScore', 0);
-
-        // Generate the shareable image
-        const imageSvg = await generateStatsShareableSvg(context, wordsPerMinuteHighScore, new Date());
-
         // Display the image
         const panel = vscode.window.createWebviewPanel(
             'shareStats',
@@ -16,7 +11,13 @@ export default function generateShareStatsCommand(context: vscode.ExtensionConte
             {}
         );
 
-        panel.webview.html = `
+        try {
+            const wordsPerMinuteHighScore = context.globalState.get<number>('typingspeedometer.wordsPerMinuteHighScore', 0);
+
+            // Generate the shareable image
+            const imageSvg = await generateStatsShareableSvg(context, wordsPerMinuteHighScore, new Date());
+
+            panel.webview.html = `
             <html>
             <body style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; background: #181818;">
                 <div style="display: flex; flex-direction: column; align-items: center;">
@@ -34,6 +35,9 @@ export default function generateShareStatsCommand(context: vscode.ExtensionConte
             </body>
             </html>
         `;
+        } catch (error) {
+            panel.webview.html = `There was an error generating the shareable stats image: ${error}`;
+        }
     });
 };
 
