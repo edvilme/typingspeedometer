@@ -1,10 +1,9 @@
 // import nodeHtmlToImage from 'node-html-to-image';
-import * as vscode from 'vscode';
 import * as fs from 'fs';
+import * as vscode from 'vscode';
 
 export default function generateShareStatsCommand(context: vscode.ExtensionContext) {
     return vscode.commands.registerCommand('typingspeedometer.shareStats', async () => {
-        const highScore = context.globalState.get<number>('typingspeedometer.highScore', 0);
         const wordsPerMinuteHighScore = context.globalState.get<number>('typingspeedometer.wordsPerMinuteHighScore', 0);
 
         // Generate the shareable image
