@@ -46,14 +46,28 @@ export function handleTyping(context: vscode.ExtensionContext, args?: { text: st
     
     if (typingspeedometer > highScore && duration > typingTimeoutMilliseconds) {
         context.globalState.update('typingspeedometer.highScore', typingspeedometer.toFixed(2));
-        // Show a notification
-        vscode.window.showInformationMessage(`Typing Speed New High Score: ${typingspeedometer.toFixed(2)} keys/sec!`);
+        // Show a notification with a Share button
+        vscode.window.showInformationMessage(
+            `Typing Speed New High Score: ${typingspeedometer.toFixed(2)} keys/sec!`,
+            'Share...'
+        ).then(selection => {
+            if (selection === 'Share...') {
+                vscode.commands.executeCommand('typingspeedometer.shareStats');
+            }
+        });
     }
     
     if (wordsPerMinute > wordsPerMinuteHighScore && duration > typingTimeoutMilliseconds && currentSessionWords > 0) {
         context.globalState.update('typingspeedometer.wordsPerMinuteHighScore', wordsPerMinute.toFixed(2));
-        // Show a notification
-        vscode.window.showInformationMessage(`WPM New High Score: ${wordsPerMinute.toFixed(2)} words/min!`);
+        // Show a notification with a Share button
+        vscode.window.showInformationMessage(
+            `WPM New High Score: ${wordsPerMinute.toFixed(2)} words/min!`,
+            'Share...'
+        ).then(selection => {
+            if (selection === 'Share...') {
+                vscode.commands.executeCommand('typingspeedometer.shareStats');
+            }
+        });
     }
 
     vscode.window.setStatusBarMessage(`$(keyboard) ${typingspeedometer.toFixed(2)} keys/sec | ${wordsPerMinute.toFixed(1)} WPM`, typingTimeoutMilliseconds);
