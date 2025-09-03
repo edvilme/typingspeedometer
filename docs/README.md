@@ -6,7 +6,7 @@ This directory contains the promotional landing page for the Typing Speedometer 
 
 - `index.html` - Main landing page with extension information, features, and installation instructions
 - `style.css` - CSS styling for the landing page
-- `img/` - Images used on the landing page (copied from `docs/img/`)
+- `img/` - Images used on the landing page
 
 ## Usage
 
