@@ -11,10 +11,11 @@ Developers are weird, we flex over random non-technical skills such as typing sp
 ## Features
 
 - Counts keystrokes in the editor
-- **NEW: Words Per Minute (WPM) calculation** - Tracks words completed by monitoring spaces, tabs, and enters
+- Words Per Minute (WPM) calculation - Tracks words completed by monitoring spaces, tabs, and enters
 - Shows both keystroke speed (keys/sec) and WPM in real-time
 - Persists keystroke count and word count between sessions
 - Shows high scores for both keystroke speed and WPM
+- Share high scores with friends in social media
 - Configurable session timeout
 
 ## Usage
@@ -27,6 +28,8 @@ Developers are weird, we flex over random non-technical skills such as typing sp
 ![](docs/img/new_high_score.png)
 5. Check your high scores with <key>Ctrl</key> <key>Alt</key> <key>S</key>, or by using the Command Palette.
 ![](docs/img/check_high_score.png)
+6. Share your typing statistics as an image on social media!
+![](docs/img/share_stats.png)
 
 ## Settings
 
