@@ -6,6 +6,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [1.1.1] - 2024-12-22
+
+### Changed
+- Moved website from /static to /docs directory for improved GitHub Pages hosting support
+
 ## [1.1.0] - 2024-12-20
 
 ### Added
