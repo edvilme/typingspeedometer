@@ -1,4 +1,3 @@
-// import nodeHtmlToImage from 'node-html-to-image';
 import * as fs from 'fs';
 import * as vscode from 'vscode';
 
