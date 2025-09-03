@@ -41,12 +41,13 @@ export default function generateShareStatsCommand(context: vscode.ExtensionConte
 
 export async function generateStatsShareableSvg(context: vscode.ExtensionContext, wordsPerMinuteHighScore: number, now: Date): Promise<string> {
     const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
-    const logoUrl = "https://raw.githubusercontent.com/edvilme/typingspeed/main/docs/img/icon.png";
+    const logoPath = context.asAbsolutePath('docs/img/icon.png');
+    const logoBase64 = await fs.promises.readFile(logoPath, { encoding: 'base64' });
     // Get svg from assets/shareableStats.svg
-    const assetsPath = context.asAbsolutePath('src/commands/shareStats/shareableStats.svg');
-    const svg = await fs.promises.readFile(assetsPath, 'utf8');
-    return svg
+    const svgAssetPath = context.asAbsolutePath('src/commands/shareStats/shareableStats.svg');
+    const svgAsset = await fs.promises.readFile(svgAssetPath, 'utf8');
+    return svgAsset
         .replace('${today}', today)
         .replace('${wordsPerMinuteHighScore}', String(wordsPerMinuteHighScore))
-        .replace('${logoUrl}', logoUrl);
+        .replace('${logoUrl}', `data:image/png;base64,${logoBase64}`);
 }

@@ -12,9 +12,9 @@
     <text x='200' y='155' text-anchor='middle' font-family='Segoe UI, Arial, sans-serif'
         font-size='20' fill='#fff'>My newest typing speed in VS Code</text>
     <rect x='80' y='170' width='240' height='2' fill='#444' />
-    <image id="typingspeed_logo" src='${logoUrl}' x='172' y='190' width='56' height='56' rx='12' />
-    <text x='200' y='270' text-anchor='middle' font-family='Segoe UI, Arial, sans-serif'
-        font-size='16' fill='#ffd700'>Download <tspan font-weight='bold'>typingspeedometer</tspan>
-
-        on VS Code Marketplace</text>
+    <image id="typingspeed_logo" href='${logoUrl}' x='172' y='190' width='56' height='56' rx='12' />
+    <text x='200' y='265' text-anchor='middle' font-family='Segoe UI, Arial, sans-serif'
+        font-size='16' fill='#ffd700'>Download <tspan font-weight='bold'>typingspeedometer</tspan></text>
+    <text x='200' y='290' text-anchor='middle' font-family='Segoe UI, Arial, sans-serif'
+        font-size='16' fill='#ffd700'>on VS Code Marketplace</text>
 </svg>
