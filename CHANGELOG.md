@@ -6,6 +6,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [1.1.0] - 2024-12-20
+
+### Added
+- Ability to share typing statistics as an image in social media
+
 ## [1.0.3] - 2024-12-20
 
 ### Added
