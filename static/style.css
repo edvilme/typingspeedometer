@@ -8,8 +8,8 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #ffffff;
+    color: #e2e8f0;
+    background-color: #1a202c;
 }
 
 .container {
@@ -20,11 +20,12 @@ body {
 
 /* Header and Navigation */
 header {
-    background: #fff;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    background: #2d3748;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     position: sticky;
     top: 0;
     z-index: 100;
+    border-bottom: 1px solid #4a5568;
 }
 
 .nav-container {
@@ -50,7 +51,7 @@ header {
 .logo-text {
     font-size: 1.4rem;
     font-weight: 600;
-    color: #007acc;
+    color: #63b3ed;
 }
 
 .nav-links {
@@ -60,21 +61,22 @@ header {
 
 .nav-links a {
     text-decoration: none;
-    color: #555;
+    color: #cbd5e0;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #007acc;
+    color: #63b3ed;
 }
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    color: #e2e8f0;
     padding: 5rem 0;
     text-align: center;
+    border-bottom: 1px solid #4a5568;
 }
 
 .hero h1 {
@@ -102,12 +104,13 @@ header {
 }
 
 .feature-tag {
-    background: rgba(255,255,255,0.2);
+    background: rgba(99, 179, 237, 0.15);
+    border: 1px solid rgba(99, 179, 237, 0.3);
     padding: 0.5rem 1rem;
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 500;
-    backdrop-filter: blur(10px);
+    color: #90cdf4;
 }
 
 .cta-section {
@@ -130,33 +133,32 @@ header {
 }
 
 .cta-button.primary {
-    background: #007acc;
+    background: #3182ce;
     color: white;
-    box-shadow: 0 4px 15px rgba(0,122,204,0.3);
+    box-shadow: 0 4px 15px rgba(49, 130, 206, 0.3);
 }
 
 .cta-button.primary:hover {
-    background: #005a9e;
+    background: #2c5282;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,122,204,0.4);
+    box-shadow: 0 6px 20px rgba(49, 130, 206, 0.4);
 }
 
 .cta-button.secondary {
-    background: rgba(255,255,255,0.1);
-    color: white;
-    border: 1px solid rgba(255,255,255,0.3);
-    backdrop-filter: blur(10px);
+    background: rgba(99, 179, 237, 0.1);
+    color: #90cdf4;
+    border: 1px solid rgba(99, 179, 237, 0.3);
 }
 
 .cta-button.secondary:hover {
-    background: rgba(255,255,255,0.2);
+    background: rgba(99, 179, 237, 0.2);
     transform: translateY(-2px);
 }
 
 /* Features Section */
 .features {
     padding: 5rem 0;
-    background: #f8f9fa;
+    background: #2d3748;
 }
 
 .features-showcase {
@@ -167,17 +169,19 @@ header {
 }
 
 .feature-demo {
-    background: white;
+    background: #4a5568;
     border-radius: 16px;
     padding: 2rem;
     text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #718096;
 }
 
 .feature-demo:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    border-color: #63b3ed;
 }
 
 .demo-img {
@@ -186,33 +190,35 @@ header {
     height: auto;
     border-radius: 8px;
     margin-bottom: 1.5rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    border: 1px solid #718096;
 }
 
 .feature-info h3 {
     font-size: 1.4rem;
     margin-bottom: 0.8rem;
-    color: #333;
+    color: #e2e8f0;
 }
 
 .feature-info p {
-    color: #666;
+    color: #cbd5e0;
     font-size: 1rem;
 }
 
 /* Installation Section */
 .installation-simple {
-    background: white;
+    background: #4a5568;
     border-radius: 16px;
     padding: 3rem;
     text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    border: 1px solid #718096;
 }
 
 .installation-simple h3 {
     font-size: 1.8rem;
     margin-bottom: 2rem;
-    color: #333;
+    color: #e2e8f0;
 }
 
 .install-options {
@@ -228,32 +234,34 @@ header {
 .install-option span {
     display: block;
     font-weight: 600;
-    color: #007acc;
+    color: #63b3ed;
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
 }
 
 .install-option p {
-    color: #666;
+    color: #cbd5e0;
     margin-bottom: 1rem;
 }
 
 .install-option code {
-    background: #2d3748;
-    color: #e2e8f0;
+    background: #1a202c;
+    color: #90cdf4;
     padding: 0.8rem 1.2rem;
     border-radius: 8px;
     display: inline-block;
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     font-size: 0.9rem;
     word-break: break-all;
+    border: 1px solid #4a5568;
 }
 
 /* Footer */
 footer {
-    background: #2d3748;
+    background: #1a202c;
     color: #e2e8f0;
     padding: 2rem 0;
+    border-top: 1px solid #4a5568;
 }
 
 .footer-simple {
@@ -269,13 +277,13 @@ footer {
 }
 
 .footer-simple a {
-    color: #007acc;
+    color: #63b3ed;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-simple a:hover {
-    color: #4fc3f7;
+    color: #90cdf4;
 }
 
 .footer-links {
@@ -290,7 +298,7 @@ footer {
 }
 
 .footer-links a:hover {
-    color: #007acc;
+    color: #63b3ed;
 }
 
 /* Responsive Design */
