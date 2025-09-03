@@ -46,11 +46,13 @@ export function handleTyping(context: vscode.ExtensionContext, args?: { text: st
     
     if (typingspeedometer > highScore && duration > typingTimeoutMilliseconds) {
         context.globalState.update('typingspeedometer.highScore', typingspeedometer.toFixed(2));
+        // Show a notification
         vscode.window.showInformationMessage(`Typing Speed New High Score: ${typingspeedometer.toFixed(2)} keys/sec!`);
     }
     
     if (wordsPerMinute > wordsPerMinuteHighScore && duration > typingTimeoutMilliseconds && currentSessionWords > 0) {
         context.globalState.update('typingspeedometer.wordsPerMinuteHighScore', wordsPerMinute.toFixed(2));
+        // Show a notification
         vscode.window.showInformationMessage(`WPM New High Score: ${wordsPerMinute.toFixed(2)} words/min!`);
     }
 

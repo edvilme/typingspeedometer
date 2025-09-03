@@ -3,6 +3,7 @@
 import * as vscode from 'vscode';
 import generateHighScoreCommand from './commands/highScoreCommand';
 import generateTypeCommand, { handleTyping } from './commands/typeCommand';
+import generateShareStatsCommand from './commands/shareStats/shareStatsCommand';
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log('Congratulations, your extension "typingspeedometer" is now active!');
@@ -13,6 +14,9 @@ export function activate(context: vscode.ExtensionContext) {
 	context.globalState.update('typingspeedometer.sessionEndTime', new Date());
 	context.globalState.update('typingspeedometer.highScore', 0);
 	context.globalState.update('typingspeedometer.wordsPerMinuteHighScore', 0);
+
+	// Share Stats Command
+	context.subscriptions.push(generateShareStatsCommand(context));
 
 	// High Score Command
 	context.subscriptions.push(generateHighScoreCommand(context));
