@@ -6,6 +6,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [1.1.2] - 2024-12-22
+
+### Added
+- Direct marketplace download link in README.md Usage section for easier extension installation
+
 ## [1.1.1] - 2024-12-22
 
 ### Changed
