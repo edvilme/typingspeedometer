@@ -20,7 +20,7 @@ Developers are weird, we flex over random non-technical skills such as typing sp
 
 ## Usage
 
-1. Install the extension.
+1. Install the extension from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=edvilme.typingspeedometer).
 2. Start typing in any editor window. The extension will automatically count your keystrokes per second and words per minute (WPM).
 ![](docs/img/status_bar.png)
 3. Words are counted each time you type a space, tab, or press enter - indicating word completion.
