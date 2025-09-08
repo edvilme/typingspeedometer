@@ -9,7 +9,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [1.1.3] - 2024-12-22
 
 ### Changed
-- Improved status bar message formatting for typing speed updates
+- Status bar message now includes color-coded emoji indicators (🔴/🟡/🟢) based on WPM thresholds for typing speed updates
 
 ### Added
 - `mediumSpeedThreshold` and `highSpeedThreshold` settings for customizable speed thresholds
