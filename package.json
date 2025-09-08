@@ -53,6 +53,20 @@
               "description": "Timeout duration for typing sessions in milliseconds.",
               "minimum": 0,
               "maximum": 60000
+            },
+            "mediumSpeedThreshold": {
+              "type": "number",
+              "default": 50,
+              "description": "WPM threshold for medium typing speed (yellow indicator)",
+              "minimum": 0,
+              "maximum": 500
+            },
+            "highSpeedThreshold": {
+              "type": "number",
+              "default": 80,
+              "description": "WPM threshold for high typing speed (green indicator)",
+              "minimum": 0,
+              "maximum": 500
             }
           }
         }
