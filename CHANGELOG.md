@@ -11,6 +11,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### Changed
 - Improved status bar message formatting for typing speed updates
 
+### Added
+- `mediumSpeedThreshold` and `highSpeedThreshold` settings for customizable speed thresholds
+
 ## [1.1.2] - 2024-12-22
 
 ### Added
