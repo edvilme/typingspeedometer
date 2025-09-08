@@ -1,8 +1,67 @@
 import * as vscode from 'vscode';
 
+function resetSessionData(context: vscode.ExtensionContext) {
+    context.globalState.update('typingspeedometer.sessionKeystrokes', 0);
+    context.globalState.update('typingspeedometer.sessionWords', 0);
+    context.globalState.update('typingspeedometer.sessionStartTime', new Date());
+    context.globalState.update('typingspeedometer.sessionEndTime', new Date());
+}
+
+function checkAndNotifyHighScore({
+    score,
+    highScore,
+    key,
+    message,
+    condition,
+    context
+}: {
+    score: number;
+    highScore: number;
+    key: string;
+    message: string;
+    condition: boolean;
+    context: vscode.ExtensionContext;
+}) {
+    if (score > highScore && condition) {
+        context.globalState.update(key, score.toFixed(2));
+        vscode.window.showInformationMessage(
+            message,
+            'Share...'
+        ).then(selection => {
+            if (selection === 'Share...') {
+                vscode.commands.executeCommand('typingspeedometer.shareStats');
+            }
+        });
+    }
+}
+
+function renderStatusBarMessage({
+    keysPerSecond,
+    wordsPerMinute,
+    timeout
+}: {
+    keysPerSecond: number;
+    wordsPerMinute: number;
+    timeout: number;
+}) {
+    const mediumSpeedThreshold = vscode.workspace.getConfiguration('typingspeedometer').get<number>('mediumSpeedThreshold', 50);
+    const highSpeedThreshold = vscode.workspace.getConfiguration('typingspeedometer').get<number>('highSpeedThreshold', 80);
+    // Traffic light colors for WPM
+    let wpmColorEmoji = '';
+    if (wordsPerMinute >= highSpeedThreshold) {
+        wpmColorEmoji = '🟢'; // Green
+    } else if (wordsPerMinute >= mediumSpeedThreshold) {
+        wpmColorEmoji = '🟡'; // Yellow
+    } else {
+        wpmColorEmoji = '🔴'; // Red
+    }
+    const message = `${keysPerSecond.toFixed(2)} keys/sec | ${wordsPerMinute.toFixed(1)} WPM`;
+    vscode.window.setStatusBarMessage(`$(keyboard) ${wpmColorEmoji} ${message}`, timeout);
+}
+
 export function handleTyping(context: vscode.ExtensionContext, args?: { text: string }) {
     const typingTimeoutMilliseconds = vscode.workspace.getConfiguration('typingspeedometer').get<number>('sessionTimeout', 3000);
-    
+
     // Get the current time
     const currentTime = new Date();
 
@@ -11,15 +70,10 @@ export function handleTyping(context: vscode.ExtensionContext, args?: { text: st
     const lastSessionWords: number = context.globalState.get<number>('typingspeedometer.sessionWords', 0);
     const lastSessionStartTime: Date = new Date(context.globalState.get<Date>('typingspeedometer.sessionStartTime', new Date()));
     const lastSessionEndTime: Date = new Date(context.globalState.get<Date>('typingspeedometer.sessionEndTime', new Date()));
-    
+
     // If last session ended more than <TYPING_TIMEOUT> seconds ago
     if (lastSessionEndTime && (currentTime.getTime() - lastSessionEndTime.getTime()) > typingTimeoutMilliseconds) {
-        // Reset the session data
-        context.globalState.update('typingspeedometer.sessionKeystrokes', 0);
-        context.globalState.update('typingspeedometer.sessionWords', 0);
-        context.globalState.update('typingspeedometer.sessionStartTime', new Date());
-        context.globalState.update('typingspeedometer.sessionEndTime', new Date());
-        return;
+        return resetSessionData(context);
     }
 
     // Increment the session keystrokes
@@ -32,9 +86,9 @@ export function handleTyping(context: vscode.ExtensionContext, args?: { text: st
     // Typing speed calculations
     const duration: number = currentTime.getTime() - lastSessionStartTime.getTime();
     const durationInMinutes: number = duration / (1_000 * 60); // Convert to minutes
-    const typingspeedometer: number = (currentSessionKeyStrokes / duration) * 1_000; // keystrokes per second
+    const keysPerSecond: number = (currentSessionKeyStrokes / duration) * 1_000; // keystrokes per second
     const wordsPerMinute: number = durationInMinutes > 0 ? currentSessionWords / durationInMinutes : 0;
-    
+
     // Update states
     context.globalState.update('typingspeedometer.sessionEndTime', new Date());
     context.globalState.update('typingspeedometer.sessionKeystrokes', currentSessionKeyStrokes);
@@ -43,34 +97,30 @@ export function handleTyping(context: vscode.ExtensionContext, args?: { text: st
     // High Score
     const highScore = context.globalState.get<number>('typingspeedometer.highScore', 0);
     const wordsPerMinuteHighScore = context.globalState.get<number>('typingspeedometer.wordsPerMinuteHighScore', 0);
-    
-    if (typingspeedometer > highScore && duration > typingTimeoutMilliseconds) {
-        context.globalState.update('typingspeedometer.highScore', typingspeedometer.toFixed(2));
-        // Show a notification with a Share button
-        vscode.window.showInformationMessage(
-            `Typing Speed New High Score: ${typingspeedometer.toFixed(2)} keys/sec!`,
-            'Share...'
-        ).then(selection => {
-            if (selection === 'Share...') {
-                vscode.commands.executeCommand('typingspeedometer.shareStats');
-            }
-        });
-    }
-    
-    if (wordsPerMinute > wordsPerMinuteHighScore && duration > typingTimeoutMilliseconds && currentSessionWords > 0) {
-        context.globalState.update('typingspeedometer.wordsPerMinuteHighScore', wordsPerMinute.toFixed(2));
-        // Show a notification with a Share button
-        vscode.window.showInformationMessage(
-            `WPM New High Score: ${wordsPerMinute.toFixed(2)} words/min!`,
-            'Share...'
-        ).then(selection => {
-            if (selection === 'Share...') {
-                vscode.commands.executeCommand('typingspeedometer.shareStats');
-            }
-        });
-    }
 
-    vscode.window.setStatusBarMessage(`$(keyboard) ${typingspeedometer.toFixed(2)} keys/sec | ${wordsPerMinute.toFixed(1)} WPM`, typingTimeoutMilliseconds);
+    renderStatusBarMessage({
+        keysPerSecond: keysPerSecond,
+        wordsPerMinute: wordsPerMinute,
+        timeout: typingTimeoutMilliseconds
+    });
+    
+    checkAndNotifyHighScore({
+        context: context,
+        score: keysPerSecond,
+        highScore: highScore,
+        key: 'typingspeedometer.highScore',
+        message: `Typing Speed New High Score: ${keysPerSecond.toFixed(2)} keys/sec!`,
+        condition: duration > typingTimeoutMilliseconds,
+    });
+
+    checkAndNotifyHighScore({
+        context: context,
+        score: wordsPerMinute,
+        highScore: wordsPerMinuteHighScore,
+        key: 'typingspeedometer.wordsPerMinuteHighScore',
+        message: `WPM New High Score: ${wordsPerMinute.toFixed(2)} words/min!`,
+        condition: duration > typingTimeoutMilliseconds && currentSessionWords > 0,
+    });
 }
 
 export default function generateTypeCommand(context: vscode.ExtensionContext) {
