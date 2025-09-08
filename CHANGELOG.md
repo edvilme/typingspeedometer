@@ -6,6 +6,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [1.1.3] - 2024-12-22
+
+### Changed
+- Improved status bar message formatting for typing speed updates
+
 ## [1.1.2] - 2024-12-22
 
 ### Added
