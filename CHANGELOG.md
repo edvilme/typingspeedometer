@@ -6,6 +6,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [1.1.4] - 2024-12-23
+
+### Fixed
+- VS Code compatibility issue - reduced minimum required version from 1.103.0 to 1.97.0 to support more recent VS Code installations including 1.97.2
+
 ## [1.1.3] - 2024-12-22
 
 ### Changed
