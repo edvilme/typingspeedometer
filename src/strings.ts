@@ -21,18 +21,18 @@ export const strings = {
     // Status bar messages
     statusBar: {
         message: (keysPerSecond: string, wordsPerMinute: string) => 
-            l10n.t('${0} keys/sec | ${1} WPM', keysPerSecond, wordsPerMinute)
+            l10n.t('{0} keys/sec | {1} WPM', keysPerSecond, wordsPerMinute)
     },
     
     // High score notifications
     highScore: {
         keystrokeNewHighScore: (score: string) => 
-            l10n.t('Typing Speed New High Score: ${0} keys/sec!', score),
+            l10n.t('Typing Speed New High Score: {0} keys/sec!', score),
         wpmNewHighScore: (score: string) => 
-            l10n.t('WPM New High Score: ${0} words/min!', score),
+            l10n.t('WPM New High Score: {0} words/min!', score),
         shareButton: l10n.t('Share...'),
         displayMessage: (keystrokeScore: string, wpmScore: string) => 
-            l10n.t('High Scores - Keystrokes: ${0} keys/sec | WPM: ${1} words/min', keystrokeScore, wpmScore),
+            l10n.t('High Scores - Keystrokes: {0} keys/sec | WPM: {1} words/min', keystrokeScore, wpmScore),
         resetButton: l10n.t('Reset High Scores'),
         resetConfirmation: l10n.t('High Scores have been reset.')
     },
@@ -49,6 +49,6 @@ export const strings = {
         callToActionText: l10n.t('Show off your typing speed and tag {0}!'),
         hashtag: l10n.t('#typingspeedometer'),
         error: (error: string) => 
-            l10n.t('There was an error generating the shareable stats image: ${0}', escapeHtml(error))
+            l10n.t('There was an error generating the shareable stats image: {0}', escapeHtml(error))
     }
 };
