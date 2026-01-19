@@ -1,13 +1,27 @@
 import * as l10n from '@vscode/l10n';
 
 /**
+ * Escapes HTML special characters to prevent XSS vulnerabilities
+ */
+function escapeHtml(text: string): string {
+    const map: { [key: string]: string } = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, (m) => map[m]);
+}
+
+/**
  * Localized strings for the Typing Speedometer extension
  */
 export const strings = {
     // Status bar messages
     statusBar: {
-        message: (keysPerSec: string, wpm: string) => 
-            l10n.t('${0} keys/sec | ${1} WPM', keysPerSec, wpm)
+        message: (keysPerSecond: string, wordsPerMinute: string) => 
+            l10n.t('${0} keys/sec | ${1} WPM', keysPerSecond, wordsPerMinute)
     },
     
     // High score notifications
@@ -27,11 +41,11 @@ export const strings = {
     shareStats: {
         title: l10n.t('Share Typing Stats'),
         howToShare: l10n.t('How to share:'),
-        step1: l10n.t('Right-click the image above and choose <b>Copy Image</b> (or <b>Save Image As...</b> to download).'),
+        step1: l10n.t('Right-click the image above and choose Copy Image (or Save Image As... to download).'),
         step2: l10n.t('Go to your favorite social platform (X, LinkedIn, Facebook, etc.).'),
         step3: l10n.t('Paste (or upload) the image into your post or message.'),
-        callToAction: l10n.t('Show off your typing speed and tag <b>#typingspeedometer</b>!'),
+        callToAction: l10n.t('Show off your typing speed and tag #typingspeedometer!'),
         error: (error: string) => 
-            l10n.t('There was an error generating the shareable stats image: ${0}', error)
+            l10n.t('There was an error generating the shareable stats image: ${0}', escapeHtml(error))
     }
 };

@@ -26,11 +26,11 @@ export default function generateShareStatsCommand(context: vscode.ExtensionConte
                     <div style="margin-top: 28px; max-width: 420px; text-align: center; color: #fff; font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.1em;">
                         <strong>${strings.shareStats.howToShare}</strong><br />
                         <ol style="margin: 12px 0 0 1.2em; padding: 0; text-align: left; color: #eee;">
-                            <li>${strings.shareStats.step1}</li>
+                            <li>${strings.shareStats.step1.replace('Copy Image', '<b>Copy Image</b>').replace('Save Image As...', '<b>Save Image As...</b>')}</li>
                             <li>${strings.shareStats.step2}</li>
                             <li>${strings.shareStats.step3}</li>
                         </ol>
-                        <div style="margin-top: 16px; color: #ffd700; font-size: 1em;">${strings.shareStats.callToAction}</div>
+                        <div style="margin-top: 16px; color: #ffd700; font-size: 1em;">${strings.shareStats.callToAction.replace('#typingspeedometer', '<b>#typingspeedometer</b>')}</div>
                     </div>
                 </div>
             </body>
