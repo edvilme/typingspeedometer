@@ -2,6 +2,8 @@ import * as l10n from '@vscode/l10n';
 
 /**
  * Escapes HTML special characters to prevent XSS vulnerabilities
+ * Note: This is only needed for user-provided or external content.
+ * Numeric values from .toFixed() and localized strings we control are inherently safe.
  */
 function escapeHtml(text: string): string {
     const map: { [key: string]: string } = {
