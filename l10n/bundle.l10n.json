@@ -1,0 +1,16 @@
+{
+  "${0} keys/sec | ${1} WPM": "${0} keys/sec | ${1} WPM",
+  "Typing Speed New High Score: ${0} keys/sec!": "Typing Speed New High Score: ${0} keys/sec!",
+  "WPM New High Score: ${0} words/min!": "WPM New High Score: ${0} words/min!",
+  "Share...": "Share...",
+  "High Scores - Keystrokes: ${0} keys/sec | WPM: ${1} words/min": "High Scores - Keystrokes: ${0} keys/sec | WPM: ${1} words/min",
+  "Reset High Scores": "Reset High Scores",
+  "High Scores have been reset.": "High Scores have been reset.",
+  "Share Typing Stats": "Share Typing Stats",
+  "How to share:": "How to share:",
+  "Right-click the image above and choose <b>Copy Image</b> (or <b>Save Image As...</b> to download).": "Right-click the image above and choose <b>Copy Image</b> (or <b>Save Image As...</b> to download).",
+  "Go to your favorite social platform (X, LinkedIn, Facebook, etc.).": "Go to your favorite social platform (X, LinkedIn, Facebook, etc.).",
+  "Paste (or upload) the image into your post or message.": "Paste (or upload) the image into your post or message.",
+  "Show off your typing speed and tag <b>#typingspeedometer</b>!": "Show off your typing speed and tag <b>#typingspeedometer</b>!",
+  "There was an error generating the shareable stats image: ${0}": "There was an error generating the shareable stats image: ${0}"
+}

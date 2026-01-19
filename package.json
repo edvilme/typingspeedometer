@@ -1,9 +1,9 @@
 {
   "name": "typingspeedometer",
-  "displayName": "typing-speed",
+  "displayName": "%displayName%",
   "publisher": "edvilme",
-  "description": "Shows keystrokes per second and words per minute (WPM) while typing",
-  "version": "1.1.4",
+  "description": "%description%",
+  "version": "1.2.0",
   "icon": "docs/img/icon.png",
   "engines": {
     "vscode": "^1.97.0"
@@ -23,15 +23,15 @@
     "commands": [
       {
         "command": "typingspeedometer.showHighScore",
-        "title": "Show High Score"
+        "title": "%command.showHighScore.title%"
       },
       {
         "command": "typingspeedometer.textType",
-        "title": "Text Typing"
+        "title": "%command.textType.title%"
       },
       {
         "command": "typingspeedometer.shareStats",
-        "title": "Share Typing Stats"
+        "title": "%command.shareStats.title%"
       }
     ],
     "keybindings": [
@@ -45,26 +45,26 @@
       "properties": {
         "typingspeedometer": {
           "type": "object",
-          "description": "Typing Speed extension settings.",
+          "description": "%config.typingspeedometer.description%",
           "properties": {
             "sessionTimeout": {
               "type": "number",
               "default": 3000,
-              "description": "Timeout duration for typing sessions in milliseconds.",
+              "description": "%config.sessionTimeout.description%",
               "minimum": 0,
               "maximum": 60000
             },
             "mediumSpeedThreshold": {
               "type": "number",
               "default": 50,
-              "description": "WPM threshold for medium typing speed (yellow indicator)",
+              "description": "%config.mediumSpeedThreshold.description%",
               "minimum": 0,
               "maximum": 500
             },
             "highSpeedThreshold": {
               "type": "number",
               "default": 80,
-              "description": "WPM threshold for high typing speed (green indicator)",
+              "description": "%config.highSpeedThreshold.description%",
               "minimum": 0,
               "maximum": 500
             }
@@ -99,5 +99,8 @@
     "eslint": "^9.32.0",
     "npm-run-all": "^4.1.5",
     "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@vscode/l10n": "^0.0.18"
   }
 }
