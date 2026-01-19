@@ -41,10 +41,13 @@ export const strings = {
     shareStats: {
         title: l10n.t('Share Typing Stats'),
         howToShare: l10n.t('How to share:'),
-        step1: l10n.t('Right-click the image above and choose Copy Image (or Save Image As... to download).'),
+        step1CopyImage: l10n.t('Copy Image'),
+        step1SaveImage: l10n.t('Save Image As...'),
+        step1Text: l10n.t('Right-click the image above and choose {0} (or {1} to download).'),
         step2: l10n.t('Go to your favorite social platform (X, LinkedIn, Facebook, etc.).'),
         step3: l10n.t('Paste (or upload) the image into your post or message.'),
-        callToAction: l10n.t('Show off your typing speed and tag #typingspeedometer!'),
+        callToActionText: l10n.t('Show off your typing speed and tag {0}!'),
+        hashtag: l10n.t('#typingspeedometer'),
         error: (error: string) => 
             l10n.t('There was an error generating the shareable stats image: ${0}', escapeHtml(error))
     }
