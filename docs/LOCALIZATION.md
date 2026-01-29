@@ -1,12 +1,13 @@
 # Localization Guide
 
-This extension supports localization using VS Code's `@vscode/l10n` package.
+This extension supports localization using VS Code's `@vscode/l10n` package for runtime strings.
 
 ## Structure
 
-- **`src/strings.ts`**: Central localization module that wraps all user-facing strings
-- **`package.nls.json`**: Localization for package.json metadata (commands, settings descriptions)
+- **`src/strings.ts`**: Central localization module that wraps all user-facing runtime strings
 - **`l10n/bundle.l10n.json`**: Runtime string translations (English by default)
+
+**Note:** Package.json metadata (commands, settings descriptions) is currently not localized.
 
 ## Adding New Strings
 
@@ -34,8 +35,7 @@ To add support for a new language (e.g., Spanish):
 
 1. Create a new bundle file: `l10n/bundle.l10n.es.json`
 2. Translate all strings in the file
-3. Create `package.nls.es.json` with translated package.json strings
-4. VS Code will automatically use the appropriate language based on the user's locale
+3. VS Code will automatically use the appropriate language based on the user's locale
 
 ## References
 

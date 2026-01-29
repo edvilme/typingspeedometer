@@ -1,8 +1,8 @@
 {
   "name": "typingspeedometer",
-  "displayName": "%displayName%",
+  "displayName": "typing-speed",
   "publisher": "edvilme",
-  "description": "%description%",
+  "description": "Shows keystrokes per second and words per minute (WPM) while typing",
   "version": "1.2.0",
   "icon": "docs/img/icon.png",
   "engines": {
@@ -23,15 +23,15 @@
     "commands": [
       {
         "command": "typingspeedometer.showHighScore",
-        "title": "%command.showHighScore.title%"
+        "title": "Show High Score"
       },
       {
         "command": "typingspeedometer.textType",
-        "title": "%command.textType.title%"
+        "title": "Text Typing"
       },
       {
         "command": "typingspeedometer.shareStats",
-        "title": "%command.shareStats.title%"
+        "title": "Share Typing Stats"
       }
     ],
     "keybindings": [
@@ -45,26 +45,26 @@
       "properties": {
         "typingspeedometer": {
           "type": "object",
-          "description": "%config.typingspeedometer.description%",
+          "description": "Typing Speed extension settings.",
           "properties": {
             "sessionTimeout": {
               "type": "number",
               "default": 3000,
-              "description": "%config.sessionTimeout.description%",
+              "description": "Timeout duration for typing sessions in milliseconds.",
               "minimum": 0,
               "maximum": 60000
             },
             "mediumSpeedThreshold": {
               "type": "number",
               "default": 50,
-              "description": "%config.mediumSpeedThreshold.description%",
+              "description": "WPM threshold for medium typing speed (yellow indicator)",
               "minimum": 0,
               "maximum": 500
             },
             "highSpeedThreshold": {
               "type": "number",
               "default": 80,
-              "description": "%config.highSpeedThreshold.description%",
+              "description": "WPM threshold for high typing speed (green indicator)",
               "minimum": 0,
               "maximum": 500
             }
