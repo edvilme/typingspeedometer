@@ -57,13 +57,33 @@ panel.webview.html = `<div>${safeText}</div>`;
 
 ## Adding New Languages
 
-To add support for a new language (e.g., Spanish):
+### Manual Translation
+
+To add support for a new language manually (e.g., Spanish):
 
 1. Create a new bundle file: `l10n/bundle.l10n.es.json`
 2. Translate all strings in the file
 3. VS Code will automatically use the appropriate language based on the user's locale
 
+### Automated Translation with Crowdin
+
+For automated translation management, we use Crowdin:
+
+- 🌍 **30+ languages** supported out of the box
+- 🤖 **Automated workflow** via GitHub Actions
+- 🆓 **Free for open source projects**
+- 📝 **Collaborative translation** with translation memory
+
+**See [CROWDIN_SETUP.md](./CROWDIN_SETUP.md) for complete setup instructions.**
+
+Quick start:
+1. Create a Crowdin project
+2. Add `CROWDIN_PROJECT_ID` and `CROWDIN_PERSONAL_TOKEN` secrets to GitHub
+3. Push changes to `l10n/bundle.l10n.json` - translations upload automatically
+4. Translations download daily and create PRs automatically
+
 ## References
 
 - [VS Code Localization Guide](https://code.visualstudio.com/api/references/vscode-api#l10n)
 - [@vscode/l10n Package](https://www.npmjs.com/package/@vscode/l10n)
+- [Crowdin Setup Guide](./CROWDIN_SETUP.md) - Automated translation workflow
