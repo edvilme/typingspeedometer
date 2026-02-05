@@ -1,0 +1,49 @@
+# Crowdin configuration for VS Code extension localization
+# Learn more: https://support.crowdin.com/configuration-file/
+---
+project_id_env: CROWDIN_PROJECT_ID
+api_token_env: CROWDIN_PERSONAL_TOKEN
+
+preserve_hierarchy: true
+
+files:
+  # VS Code l10n bundle file
+  - source: /l10n/bundle.l10n.json
+    translation: /l10n/bundle.l10n.%locale_with_underscore%.json
+    # Map Crowdin locale codes to VS Code locale codes
+    languages_mapping:
+      locale_with_underscore:
+        # European languages
+        es-ES: es
+        fr-FR: fr
+        de-DE: de
+        it-IT: it
+        pt-BR: pt-br
+        pt-PT: pt
+        # Asian languages
+        zh-CN: zh-cn
+        zh-TW: zh-tw
+        ja-JP: ja
+        ko-KR: ko
+        # Other languages
+        ru-RU: ru
+        pl-PL: pl
+        tr-TR: tr
+        nl-NL: nl
+        sv-SE: sv
+        da-DK: da
+        fi-FI: fi
+        no-NO: "no"
+        cs-CZ: cs
+        hu-HU: hu
+        ro-RO: ro
+        uk-UA: uk
+        ar-SA: ar
+        he-IL: he
+        vi-VN: vi
+        th-TH: th
+        id-ID: id
+        ms-MY: ms
+        hi-IN: hi
+        bn-BD: bn
+

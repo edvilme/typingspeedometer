@@ -6,6 +6,14 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-01-19
+
+### Added
+- Localization support using @vscode/l10n for future multi-language support
+- Localized strings module for all runtime user-facing messages
+- l10n bundle file for runtime string translations
+- Support for localizing status bar messages, high score notifications, and share stats dialog
+
 ## [1.1.4] - 2024-12-23
 
 ### Fixed

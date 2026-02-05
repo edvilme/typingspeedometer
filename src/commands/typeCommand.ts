@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { strings } from '../strings';
 
 function resetSessionData(context: vscode.ExtensionContext) {
     context.globalState.update('typingspeedometer.sessionKeystrokes', 0);
@@ -26,9 +27,9 @@ function checkAndNotifyHighScore({
         context.globalState.update(key, score.toFixed(2));
         vscode.window.showInformationMessage(
             message,
-            'Share...'
-        ).then(selection => {
-            if (selection === 'Share...') {
+            strings.highScore.shareButton
+        ).then((selection: string | undefined) => {
+            if (selection === strings.highScore.shareButton) {
                 vscode.commands.executeCommand('typingspeedometer.shareStats');
             }
         });
@@ -55,7 +56,7 @@ function renderStatusBarMessage({
     } else {
         wpmColorEmoji = '🔴'; // Red
     }
-    const message = `${keysPerSecond.toFixed(2)} keys/sec | ${wordsPerMinute.toFixed(1)} WPM`;
+    const message = strings.statusBar.message(keysPerSecond.toFixed(2), wordsPerMinute.toFixed(1));
     vscode.window.setStatusBarMessage(`$(keyboard) ${wpmColorEmoji} ${message}`, timeout);
 }
 
@@ -109,7 +110,7 @@ export function handleTyping(context: vscode.ExtensionContext, args?: { text: st
         score: keysPerSecond,
         highScore: highScore,
         key: 'typingspeedometer.highScore',
-        message: `Typing Speed New High Score: ${keysPerSecond.toFixed(2)} keys/sec!`,
+        message: strings.highScore.keystrokeNewHighScore(keysPerSecond.toFixed(2)),
         condition: duration > typingTimeoutMilliseconds,
     });
 
@@ -118,7 +119,7 @@ export function handleTyping(context: vscode.ExtensionContext, args?: { text: st
         score: wordsPerMinute,
         highScore: wordsPerMinuteHighScore,
         key: 'typingspeedometer.wordsPerMinuteHighScore',
-        message: `WPM New High Score: ${wordsPerMinute.toFixed(2)} words/min!`,
+        message: strings.highScore.wpmNewHighScore(wordsPerMinute.toFixed(2)),
         condition: duration > typingTimeoutMilliseconds && currentSessionWords > 0,
     });
 }
