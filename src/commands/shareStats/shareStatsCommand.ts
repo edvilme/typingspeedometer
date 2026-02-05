@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as vscode from 'vscode';
-import { strings } from '../../strings';
+import { strings, escapeHtml } from '../../strings';
 
 export default function generateShareStatsCommand(context: vscode.ExtensionContext) {
     return vscode.commands.registerCommand('typingspeedometer.shareStats', async () => {
@@ -18,25 +18,27 @@ export default function generateShareStatsCommand(context: vscode.ExtensionConte
             // Generate the shareable image
             const imageSvg = await generateStatsShareableSvg(context, wordsPerMinuteHighScore, new Date());
 
-            // Build the step1 text with proper formatting
-            const step1Html = strings.shareStats.step1Text
-                .replace('{0}', `<b>${strings.shareStats.step1CopyImage}</b>`)
-                .replace('{1}', `<b>${strings.shareStats.step1SaveImage}</b>`);
+            // Build the step1 text with proper formatting using localization arguments
+            const step1Html = strings.shareStats.step1Text(
+                `<b>${escapeHtml(strings.shareStats.step1CopyImage)}</b>`,
+                `<b>${escapeHtml(strings.shareStats.step1SaveImage)}</b>`
+            );
             
-            const callToActionHtml = strings.shareStats.callToActionText
-                .replace('{0}', `<b>${strings.shareStats.hashtag}</b>`);
+            const callToActionHtml = strings.shareStats.callToActionText(
+                `<b>${escapeHtml(strings.shareStats.hashtag)}</b>`
+            );
 
             panel.webview.html = `
             <html>
             <body style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; background: #181818;">
                 <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img src="data:image/svg+xml;base64,${Buffer.from(imageSvg).toString('base64')}" alt="Typing Stats" style="margin: 0 auto; display: block; max-width: 100%; height: auto; box-shadow: 0 4px 24px rgba(0,0,0,0.18); border-radius: 12px; background: #222;" />
+                    <img src="data:image/svg+xml;base64,${Buffer.from(imageSvg).toString('base64')}" alt="${escapeHtml(strings.shareStats.imageAlt)}" style="margin: 0 auto; display: block; max-width: 100%; height: auto; box-shadow: 0 4px 24px rgba(0,0,0,0.18); border-radius: 12px; background: #222;" />
                     <div style="margin-top: 28px; max-width: 420px; text-align: center; color: #fff; font-family: 'Segoe UI', Arial, sans-serif; font-size: 1.1em;">
-                        <strong>${strings.shareStats.howToShare}</strong><br />
+                        <strong>${escapeHtml(strings.shareStats.howToShare)}</strong><br />
                         <ol style="margin: 12px 0 0 1.2em; padding: 0; text-align: left; color: #eee;">
                             <li>${step1Html}</li>
-                            <li>${strings.shareStats.step2}</li>
-                            <li>${strings.shareStats.step3}</li>
+                            <li>${escapeHtml(strings.shareStats.step2)}</li>
+                            <li>${escapeHtml(strings.shareStats.step3)}</li>
                         </ol>
                         <div style="margin-top: 16px; color: #ffd700; font-size: 1em;">${callToActionHtml}</div>
                     </div>

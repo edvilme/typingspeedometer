@@ -45,12 +45,18 @@ export const strings = {
         howToShare: l10n.t('How to share:'),
         step1CopyImage: l10n.t('Copy Image'),
         step1SaveImage: l10n.t('Save Image As...'),
-        step1Text: l10n.t('Right-click the image above and choose {0} (or {1} to download).'),
+        step1Text: (copyLabel: string, saveLabel: string) =>
+            l10n.t('Right-click the image above and choose {0} (or {1} to download).', copyLabel, saveLabel),
         step2: l10n.t('Go to your favorite social platform (X, LinkedIn, Facebook, etc.).'),
         step3: l10n.t('Paste (or upload) the image into your post or message.'),
-        callToActionText: l10n.t('Show off your typing speed and tag {0}!'),
+        callToActionText: (tag: string) =>
+            l10n.t('Show off your typing speed and tag {0}!', tag),
         hashtag: l10n.t('#typingspeedometer'),
+        imageAlt: l10n.t('Typing Stats'),
         error: (error: string) => 
             l10n.t('There was an error generating the shareable stats image: {0}', escapeHtml(error))
     }
 };
+
+// Export escapeHtml for use in other modules
+export { escapeHtml };

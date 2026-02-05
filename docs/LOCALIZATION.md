@@ -4,10 +4,11 @@ This extension supports localization using VS Code's `@vscode/l10n` package for 
 
 ## Structure
 
-- **`src/strings.ts`**: Central localization module that wraps all user-facing runtime strings
+- **`src/strings.ts`**: Central localization module that wraps user-facing runtime strings used in the extension code (commands, messages, status bar text, etc.)
+- **Webview markup (HTML/attributes)**: User-facing text in webviews (including `alt`, `title`, `aria-*` attributes, headings, labels, etc.) should also be localized, typically by passing in strings from `src/strings.ts` or a similar helper
 - **`l10n/bundle.l10n.json`**: Runtime string translations (English by default)
 
-**Note:** Package.json metadata (commands, settings descriptions) is currently not localized.
+**Note:** Package.json metadata (commands, settings descriptions) is currently not localized. User-facing text in webviews must be localized explicitly as described above.
 
 ## Adding New Strings
 
@@ -28,6 +29,31 @@ This extension supports localization using VS Code's `@vscode/l10n` package for 
    import { strings } from '../strings';
    vscode.window.showInformationMessage(strings.myNewString);
    ```
+
+## Localizing Template Strings with Placeholders
+
+For strings with dynamic content, use functions that accept arguments:
+
+```typescript
+// In src/strings.ts
+myTemplate: (arg1: string, arg2: string) => 
+    l10n.t('Hello {0}, welcome to {1}!', arg1, arg2)
+
+// In your code
+const message = strings.myTemplate('John', 'VS Code');
+```
+
+## Security: HTML Escaping
+
+When displaying localized strings in webviews, always escape HTML to prevent XSS:
+
+```typescript
+import { strings, escapeHtml } from '../strings';
+
+// Escape localized content before inserting into HTML
+const safeText = escapeHtml(strings.myString);
+panel.webview.html = `<div>${safeText}</div>`;
+```
 
 ## Adding New Languages
 
