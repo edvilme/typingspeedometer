@@ -6,6 +6,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-02-09
+
+### Fixed
+- Fixed Crowdin pipeline errors caused by invalid `no-NO` language code in `crowdin.yml` - replaced with correct Crowdin language code `nb-NO` (Norwegian Bokmål)
+
 ## [1.2.0] - 2026-01-19
 
 ### Added
